@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body,
+        html {
+            height: 100%;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+        }
+        #container_demo h1{
+            text-align: center;
+        }
+        #subscribe,
+        #login {
+            position: absolute;
+            top: 0px;
+            width: 350px;
+            padding: 18px 6% 60px 6%;
+            margin-left: 570px;
+            margin-top: 130px;
+            background: #879ec5;
+            border: 1px solid#3a5178;
+
+            box-shadow:
+                0pt 2px 5px rgba(105, 108, 109, 0.7),
+                0px 0px 8px 5px#bac7de inset;
+            border-radius: 5px;
+            height: 20%;
+        }
+
+        #login {
+            z-index: 22;
+        }
+
+        #subscribe,
+        #register {
+            position: absolute;
+            top: 0px;
+            width: 350px;
+            padding: 18px 6% 60px 6%;
+            margin-left: 570px;
+            margin-top: 450px;
+            background: #879ec5;
+            ;
+            border: 1px solid #3a5178;
+            box-shadow:
+                0pt 2px 5px rgba(105, 108, 109, 0.7),
+                0px 0px 8px 5px #bac7de inset;
+            border-radius: 5px;
+            height: 30%;
+        }
+
+        #register {
+            z-index: 22;
+        }
+
+        input {
+            border-radius: 5px;
+
+        }
+
+        button {
+            -moz-box-shadow: 0px 0px 0px 0px #9fb4f2;
+            -webkit-box-shadow: 0px 0px 0px 0px #9fb4f2;
+            box-shadow: 0px 0px 0px 0px #9fb4f2;
+            background-color: #ccd5e5;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            border: 1px solid #7e8ebf;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 16px;
+            padding: 9px 13px;
+            text-decoration: none;
+            margin-left: 110px;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        #login h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            margin-left: -35px;
+        }
+
+        #login label {
+            margin-left: -35px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+        }
+
+        #login input {
+            width: 250px;
+            height: 20px;
+        }
+
+        #register h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            margin-left: -55px;
+        }
+
+        #register label {
+            margin-left: -45px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+        }
+
+        #register input {
+            width: 250px;
+            height: 20px;
+        }
+
+        #passwordsignup_confirm {
+            margin-left: 15px;
+            
+        }
+
+        #emailsignup {
+            margin-left: 44px;
+        }
+
+        #passwordsignup {
+            margin-left: 8px;
+        }
+
+        #container_demo h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        button a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .register_button {
+            margin-bottom: -50%;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+</head>
+
+<body>
+    <div id="container_demo">
+        <h1>Sign in to Manage Your Jobs</h1>
+
+        <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+        <a class="hiddenanchor" id="toregister"></a>
+        <a class="hiddenanchor" id="tologin"></a>
+        <div id="wrapper">
+            <div id="login" class="animate form">
+                <form action="/login" autocomplete="on" method="POST">
+                    {% csrf_token %}
+                    <h1>Log in</h1>
+                    <br>
+                    <p>
+                        <label for="email" class="email" data-icon="u"> Email</label>
+                        <input id="email" name="email" required="required" type="text">
+                        <br>
+                    </p>
+                    <p>
+                        <label for="password" class="youpasswd" data-icon="p">Password</label>
+                        <input id="password" name="password" required="required" type="password" />
+                    </p>
+                    <p class="login_button">
+                        <button type="submit">Login</button>
+                    </p>
+                </form>
+            </div>
+
+            <div id="register" class="animate form">
+                <form action="/register" autocomplete="on" method="POST">
+                    {% csrf_token %}
+                    <h1> Sign up </h1>
+
+                    <p>
+                        <label for="fname" class="uname" data-icon="u">First Name</label>
+                        <input id="fname" name="fname" required="required" type="text">
+                    </p>
+                    <p>
+                        <label for="first_name" class="uname" data-icon="u">Last Name</label>
+                        <input id="lname" name="lname" required="required" type="text" />
+                    </p>
+                    <p>
+                        <label for="emailsignup" class="youmail" data-icon="e">Email</label>
+                        <input id="emailsignup" name="email" required="required" type="email" />
+                    </p>
+                    <p>
+                        <label for="passwordsignup" class="youpasswd" data-icon="p">Password </label>
+                        <input id="passwordsignup" name="passwordsignup" required="required" type="password" />
+                        <br>
+                    </p>
+                    <p>
+                        <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirm
+                        </label>
+                        <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required"
+                            type="password">
+                        <p class="register_button">
+                            <button type="submit">Register</button>
+
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+</html>
